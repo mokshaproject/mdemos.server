@@ -1,32 +1,41 @@
-<%inherit file="local:templates.master"/>
+# -*- coding: utf-8 -*-
+<%namespace file="mdemos.server.templates.header" import="*" />
+<%namespace file="mdemos.server.templates.footer" import="*" />
 
-<%def name="title()">
-  Welcome to TurboGears 2.1, standing on the shoulders of giants, since 2007
-</%def>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>${title}</title>
+  </head>
 
-${parent.sidebar_top()}
+  <body>
+    <a cmenu="contextual_menu_default">
+      <div class="container">
+        ${header()}
+        <div class="span-4">
+          ## Left sidebar
+        </div>
+        <div class="span-16">
+          ## Main content
+          <div id="content"></div>
+        </div>
+        <div class="span-4 last">
+          ## Right sidebar
+        </div>
+        ##<hr class="space">
+        ${footer()}
+      </div>
+    </a>
 
-<div id="getting_started">
-  <h2>Presentation</h2>
-  <p>TurboGears 2 is rapid web application development toolkit designed to make your life easier.</p>
-  <ol id="getting_started_steps">
-    <li class="getting_started">
-      <h3>Code your data model</h3>
-      <p> Design your data model, Create the database, and Add some bootstrap data.</p>
-    </li>
-    <li class="getting_started">
-      <h3>Design your URL architecture</h3>
-      <p> Decide your URLs, Program your controller methods, Design your 
-          templates, and place some static files (CSS and/or JavaScript). </p>
-    </li>
-    <li class="getting_started">
-      <h3>Distribute your app</h3>
-      <p> Test your source, Generate project documents, Build a distribution.</p>
-    </li>
-  </ol>
-</div>
-<div class="clearingdiv" />
-<div class="notice"> Thank you for choosing TurboGears. 
-</div>
+    <div id="moksha_dock" style="display:block; padding-top: 10px; height: 30px; bottom:5px; position: absolute;" />
 
-<%def name="sidebar_bottom()"></%def>
+    ## Inject our global resources
+    ${tmpl_context.moksha_global_resources() | n}
+
+    ## Setup our right-click contextual menu
+    ## ${tmpl_context.contextual_menu_widget()}
+
+  </body>
+</html>

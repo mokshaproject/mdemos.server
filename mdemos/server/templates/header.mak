@@ -1,8 +1,7 @@
 <%def name="header()">
-  <div id="header">
-  	<h1>
-  		Welcome to TurboGears 2
-		<span class="subtitle">The Python web metaframework</span>
-	</h1>
-  </div>
+% if tmpl_context.menu_widget:
+<div id="moksha_menu" style="display:none;">
+  <center> ${tmpl_context.menu_widget.display()} </center>
+</div>
+% endif
 </%def>

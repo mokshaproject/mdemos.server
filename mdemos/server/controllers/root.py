@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Main Controller"""
 
-from tg import expose, flash, require, url, request, redirect
+from tg import expose, flash, require, url, request, redirect, tmpl_context
 from pylons.i18n import ugettext as _, lazy_ugettext as l_
 from tgext.admin.tgadminconfig import TGAdminConfig
 from tgext.admin.controller import AdminController
@@ -16,8 +16,24 @@ from mdemos.server.controllers.error import ErrorController
 
 __all__ = ['RootController']
 
+import moksha.utils
+
 
 class RootController(BaseController):
+
+    @expose('mako:mdemos.server.templates.index')
+    def index(self, *args, **kw):
+
+        from moksha.ext.turbogears import global_resources
+        tmpl_context.moksha_global_resources = global_resources
+
+        # TODO -- should 'menus' be baked right into moksha?  Probably not.
+        tmpl_context.menu_widget = moksha.utils.menus.get('default_menu', None)
+
+        return dict(title='[ Moksha ]')
+
+
+class OldRootController(BaseController):
     """
     The root controller for the mdemos.server application.
 
@@ -55,7 +71,8 @@ class RootController(BaseController):
     @expose('mdemos.server.templates.data')
     @expose('json')
     def data(self, **kw):
-        """This method showcases how you can use the same controller for a data page and a display page"""
+        """This method showcases how you can use the same controller
+        for a data page and a display page"""
         return dict(params=kw)
 
     @expose('mdemos.server.templates.authentication')
