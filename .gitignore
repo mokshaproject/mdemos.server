@@ -4,3 +4,5 @@
 *.egg*
 data
 ez_setup
+dist
+build

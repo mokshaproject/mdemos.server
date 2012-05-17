@@ -27,11 +27,11 @@ if sys.version_info[:2] == (2,4):
 
 setup(
     name='mdemos.server',
-    version='0.1',
-    description='',
-    author='',
-    author_email='',
-    #url='',
+    version='0.1.0',
+    description='A test server for mdemos.all',
+    author='Ralph Bean',
+    author_email='rbean@redhat.com',
+    url='http://github.com/ralphbean/mdemos.server',
     install_requires=[
         "TurboGears2 >= 2.1.1",
         "Mako",
@@ -47,9 +47,9 @@ setup(
         "repoze.what.plugins.sql",
         "repoze.who==1.0.19",
         "tgext.admin >= 0.3.9",
-        "tw.forms",
         "pylons==1.0.0",
         "webob==1.0.8",
+        "moksha",
         ],
     setup_requires=["PasteScript >= 1.7"],
     paster_plugins=['PasteScript', 'Pylons', 'TurboGears2', 'tg.devtools'],
