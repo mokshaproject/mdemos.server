@@ -10,9 +10,11 @@ from repoze.what import predicates
 from mdemos.server.lib.base import BaseController
 from mdemos.server.model import DBSession, metadata
 from mdemos.server import model
-from mdemos.server.controllers.secure import SecureController
 
+from mdemos.server.controllers.secure import SecureController
 from mdemos.server.controllers.error import ErrorController
+from mdemos.server.controllers.apps import AppController
+from mdemos.server.controllers.widgets import WidgetController
 
 __all__ = ['RootController']
 
@@ -20,6 +22,11 @@ import moksha.utils
 
 
 class RootController(BaseController):
+
+    apps = AppController()
+    widgets = WidgetController()
+    error = ErrorController()
+    moksha_admin = SecureController()
 
     @expose('mako:mdemos.server.templates.index')
     def index(self, *args, **kw):
