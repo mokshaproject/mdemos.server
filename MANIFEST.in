@@ -1,0 +1,4 @@
+recursive-include mdemos.server/public *
+include mdemos.server/public/favicon.ico
+recursive-include mdemos.server/i18n *
+recursive-include mdemos.server/templates *
