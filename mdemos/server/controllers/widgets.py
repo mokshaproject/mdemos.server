@@ -51,10 +51,12 @@ class WidgetController(object):
         options = {}
         options.update(kw)
         w = moksha.utils._widgets.get(widget)
+
         if not w:
             raise WidgetNotFound(widget)
+
         if (chrome and getattr(w['widget'], 'visible', True)) or source:
-            tmpl_context.widget = container
+            tmpl_context.widget = container(widget_name=widget)
             options['content'] = w['widget']
             options['content_args'] = kw
             options['title'] =  w['name']
@@ -66,14 +68,17 @@ class WidgetController(object):
                 options.update(container_options)
         else:
             tmpl_context.widget = w['widget']
+
         if live:
             tmpl_context.moksha_socket = moksha.utils.get_widget('moksha_socket')
+
         if source:
             options['content'] = iframe_widget(url='/widgets/code/' + source +
                                                '?module=%s' % module,
                                                height='425px')
             options['id'] += source + '_source'
             options['view_source'] = False
+
         if iframe:
             options['content'] = iframe_widget(url='/widgets/' + widget +
                                                '?' + urlencode(kw),
