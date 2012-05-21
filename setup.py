@@ -27,7 +27,7 @@ if sys.version_info[:2] == (2,4):
 
 setup(
     name='mdemos.server',
-    version='0.1.1',
+    version='0.1.2',
     description='A test server for mdemos.all',
     author='Ralph Bean',
     author_email='rbean@redhat.com',
