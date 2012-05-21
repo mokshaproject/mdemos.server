@@ -49,7 +49,7 @@ setup(
         "tgext.admin >= 0.3.9",
         "pylons==1.0.0",
         "webob==1.0.8",
-        "moksha",
+        "moksha>=0.8.0",
         ],
     setup_requires=["PasteScript >= 1.7"],
     paster_plugins=['PasteScript', 'Pylons', 'TurboGears2', 'tg.devtools'],
