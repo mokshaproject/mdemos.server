@@ -4,7 +4,7 @@
 from mdemos.server.config.app_cfg import base_config
 from mdemos.server.config.environment import load_environment
 
-from moksha.middleware import make_moksha_middleware
+from moksha.wsgi.middleware import make_moksha_middleware
 
 
 __all__ = ['make_app']

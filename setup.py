@@ -27,7 +27,7 @@ if sys.version_info[:2] == (2,4):
 
 setup(
     name='mdemos.server',
-    version='0.1.3',
+    version='1.0.0',
     description='A test server for mdemos.all',
     author='Ralph Bean',
     author_email='rbean@redhat.com',
@@ -48,8 +48,9 @@ setup(
         "repoze.who==1.0.19",
         "tgext.admin >= 0.3.9",
         "pylons==1.0.0",
-        "webob==1.0.8",
-        "moksha>=0.8.0",
+        "webob<=1.1.1",
+        "moksha.wsgi",
+        "moksha.hub",
         ],
     setup_requires=["PasteScript >= 1.7"],
     paster_plugins=['PasteScript', 'Pylons', 'TurboGears2', 'tg.devtools'],

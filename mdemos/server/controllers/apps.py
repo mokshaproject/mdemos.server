@@ -15,13 +15,13 @@
 #
 # Authors: Luke Macken <lmacken@redhat.com>
 
-import moksha.utils
+import moksha.common.utils
 
 from tg import expose, tmpl_context
 
-from moksha.api.widgets.containers import DashboardContainer
-from moksha.exc import ApplicationNotFound
-from moksha.lib.helpers import Category, MokshaApp, MokshaWidget
+from moksha.wsgi.widgets.api.containers import DashboardContainer
+from moksha.wsgi.lib.helpers import Category, MokshaApp, MokshaWidget
+from moksha.common.exc import ApplicationNotFound
 
 
 class AppWidgetContainer(DashboardContainer):
@@ -39,15 +39,15 @@ class AppController(object):
 
     @expose()
     def _lookup(self, app, *remainder):
-        if app not in moksha.utils._apps:
+        if app not in moksha.common.utils._apps:
             raise ApplicationNotFound(app)
-        return moksha.utils.get_app(app), remainder
+        return moksha.common.utils.get_app(app), remainder
 
     @expose('mako:moksha.templates.widget')
     def container(self, application, height=675, width=910, left=55,
                   top=50, **kw):
         """ Return an application rendered in a Moksha Widget Container """
-        app = moksha.utils.get_app(application)
+        app = moksha.common.utils.get_app(application)
         if not app:
             raise ApplicationNotFound(application)
 

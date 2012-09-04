@@ -15,18 +15,18 @@
 #
 # Authors: Luke Macken <lmacken@redhat.com>
 
-import moksha.utils
+import moksha.common.utils
 import logging
 
 from urllib import urlencode
 from tg import expose, tmpl_context, flash, redirect, validate
 from formencode import validators
 
-from moksha.exc import WidgetNotFound
+from moksha.common.exc import WidgetNotFound
 
-from moksha.widgets.source import code_widget
-from moksha.widgets.container import container
-from moksha.widgets.iframe import iframe_widget
+from moksha.wsgi.widgets.source import code_widget
+from moksha.wsgi.widgets.container import container
+from moksha.wsgi.widgets.iframe import iframe_widget
 
 log = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class WidgetController(object):
         """
         options = {}
         options.update(kw)
-        w = moksha.utils._widgets.get(widget)
+        w = moksha.common.utils._widgets.get(widget)
 
         if not w:
             raise WidgetNotFound(widget)
@@ -70,7 +70,7 @@ class WidgetController(object):
             tmpl_context.widget = w['widget']
 
         if live:
-            tmpl_context.moksha_socket = moksha.utils.get_widget('moksha_socket')
+            tmpl_context.moksha_socket = moksha.common.utils.get_widget('moksha_socket')
 
         if source:
             options['content'] = iframe_widget(url='/widgets/code/' + source +

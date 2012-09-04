@@ -18,7 +18,7 @@ from mdemos.server.controllers.widgets import WidgetController
 
 __all__ = ['RootController']
 
-import moksha.utils
+import moksha.common.utils
 
 
 class RootController(BaseController):
@@ -31,11 +31,11 @@ class RootController(BaseController):
     @expose('mako:mdemos.server.templates.index')
     def index(self, *args, **kw):
 
-        from moksha.ext.turbogears import global_resources
+        from moksha.wsgi.ext.turbogears import global_resources
         tmpl_context.moksha_global_resources = global_resources
 
         # TODO -- should 'menus' be baked right into moksha?  Probably not.
-        tmpl_context.menu_widget = moksha.utils.menus.get('default_menu', None)
+        tmpl_context.menu_widget = moksha.common.utils.menus.get('default_menu', None)
 
         return dict(title='[ Moksha ]')
 
