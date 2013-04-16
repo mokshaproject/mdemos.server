@@ -19,9 +19,10 @@ import moksha.common.utils
 
 from tg import expose, tmpl_context
 
-from moksha.wsgi.widgets.api.containers import DashboardContainer
 from moksha.wsgi.lib.helpers import Category, MokshaApp, MokshaWidget
 from moksha.common.exc import ApplicationNotFound
+
+from mdemos.server.widgets.containers import DashboardContainer
 
 
 class AppWidgetContainer(DashboardContainer):
