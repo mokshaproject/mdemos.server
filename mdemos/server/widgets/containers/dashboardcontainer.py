@@ -15,7 +15,7 @@
 
 import tw2.core as twc
 
-from moksha.wsgi.lib.helpers import eval_app_config, ConfigWrapper
+from mdemos.server.lib.helpers import eval_app_config, ConfigWrapper
 
 
 class AppListWidget(twc.Widget):
