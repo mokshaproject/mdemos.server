@@ -19,7 +19,7 @@ import tw2.forms
 import tw2.jqplugins.ui
 
 from repoze.what import predicates
-from moksha.wsgi.lib.helpers import eval_app_config, ConfigWrapper, when_ready
+from mdemos.server.lib.helpers import eval_app_config, ConfigWrapper, when_ready
 
 import urllib
 
